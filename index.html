@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Open Me When 💌</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+height:100vh;
+overflow-x:hidden;
+text-align:center;
+padding:40px;
+}
+
+h1{
+font-family:'Pacifico',cursive;
+color:white;
+font-size:42px;
+}
+
+p{
+color:white;
+}
+
+.container{
+margin-top:30px;
+}
+
+button{
+padding:14px 24px;
+margin:10px;
+border:none;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+background:white;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+.message{
+margin-top:30px;
+padding:25px;
+background:white;
+border-radius:15px;
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
+display:none;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.heart{
+position:fixed;
+bottom:-10px;
+font-size:20px;
+animation:floatUp 8s linear infinite;
+opacity:0.7;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:0;}
+50%{opacity:1;}
+100%{transform:translateY(-120vh);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>💌 Open Me When</h1>
+<p>Made with love only for you ❤️</p>
+
+<div class="container">
+
+<button onclick="showMessage('happy')">When you're Happy 😊</button>
+<button onclick="showMessage('sad')">When you're Sad 😢</button>
+<button onclick="showMessage('lonely')">When you're Lonely 🌙</button>
+<button onclick="showMessage('lost')">When you're Lost 🤍</button>
+<button onclick="showMessage('love')">Reasons I Love You 💖</button>
+
+</div>
+
+<div id="messageBox" class="message"></div>
+
+<script>
+
+const messages = {
+
+happy:"Seeing you happy is my favorite thing in the world. Your smile makes everything brighter and I feel lucky to love someone like you ❤️",
+
+sad:"If you're sad right now, I just want you to know I'm always here for you. Even if I can't hug you in this moment, my heart is always with you 🤍",
+
+lonely:"Whenever you feel lonely, remember you have me. I'm always thinking about you and sending you invisible hugs 🤗",
+
+lost:"If life feels confusing right now, take a deep breath. You don't have to figure everything out today. I believe in you always 💫",
+
+love:`
+<h3>Reasons I Love You 💖</h3>
+<ul style="text-align:left">
+<li>Your smile makes my day better</li>
+<li>You always support me</li>
+<li>You make me laugh</li>
+<li>You make me feel safe</li>
+<li>You care about people deeply</li>
+<li>You believe in me</li>
+<li>You understand me</li>
+<li>You make life happier</li>
+<li>Because you're simply YOU ❤️</li>
+</ul>
+`
+};
+
+function showMessage(type){
+const box=document.getElementById("messageBox");
+box.style.display="block";
+box.innerHTML=messages[type];
+}
+
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="💖";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+10)+"px";
+heart.style.animationDuration=(Math.random()*5+5)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},8000);
+}
+
+setInterval(createHeart,400);
+
+</script>
+
+</body>
+</html>
